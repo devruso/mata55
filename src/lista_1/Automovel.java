@@ -15,7 +15,13 @@ public class Automovel {
     }
 
     public int percorrePercurso(String combustivel, int litros){
-        return 0;
+        if(combustivel.equals("alcool")){
+            return litros * 15;
+        }else if(combustivel.equals("gasolina")){
+            return litros * 12;
+        }else{
+            return ( litros/2) * 12 + (litros/2) * 15;
+        }
     }
 
 
