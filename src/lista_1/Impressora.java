@@ -22,14 +22,13 @@ public class Impressora {
         this.capacidadeImpressao -= numeroPaginas;
         numeroPaginas = numeroPaginas * 30;
         if (numeroPaginas > 100)
-            System.out.printf("Faltam " + numeroPaginas / 60 + "segundos");
+            System.out.println("Faltam " + numeroPaginas / 60 + "segundos");
         else
-            System.out.printf("Faltam" + numeroPaginas + "segundos");
+            System.out.println("Faltam" + numeroPaginas + "segundos");
     }
 
     public void imprimeTexto(String texto) {
-        System.out.printf(texto);
+        System.out.println(texto);
     }
-
 
 }

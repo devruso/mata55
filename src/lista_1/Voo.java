@@ -13,12 +13,12 @@ public class Voo {
     public Voo(Date dataVoo, SimpleDateFormat horaVoo){
         this.dataVoo = dataVoo;
         this.horaVoo = horaVoo;
-        this.numeroVoo++;
+        numeroVoo++;
 
     }
 
     public int getVooNumber(){
-        return this.numeroVoo;
+        return numeroVoo;
     }
 
     private Date getDataVoo(){
