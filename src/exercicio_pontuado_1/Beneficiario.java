@@ -47,13 +47,16 @@ public class Beneficiario {
         this.dividaIPTU = dividaIPTU;
     }
 
-    public void pagamentoDividaRenda(Beneficiario beneficiario){
+    public void pagamentoDividaRenda(){
 
-        if(beneficiario.renda != 0 && this.dividaIPTU != 0 && this.tipoImovel != null){
+        if(this.renda != 0 && this.dividaIPTU != 0 && this.tipoImovel != null){
             if(this.renda <= 5000){
                 this.dividaIPTU = this.dividaIPTU * 0.9;
+                System.out.println(this.dividaIPTU);
             }else{
                 this.dividaIPTU = this.dividaIPTU * 0.95;
+                System.out.println(this.dividaIPTU);
+
             }
         }else{
             System.out.println("Necessário completar seu cadastro");
@@ -61,9 +64,14 @@ public class Beneficiario {
     }
 
     public void pagamentoDividaTamanhoImovel(){
-        int valorDoMetro = 10;
-        this.dividaIPTU = this.quantidadeMetros * valorDoMetro;
+        if(this.renda != 0 && this.dividaIPTU != 0 && this.tipoImovel != null){
+            int valorDoMetro = 10;
+            this.dividaIPTU = this.quantidadeMetros * valorDoMetro;
+            System.out.println(this.dividaIPTU);
 
+        }else{
+            System.out.println("Necessário completar seu cadastro");
+        }
     }
 
 }
