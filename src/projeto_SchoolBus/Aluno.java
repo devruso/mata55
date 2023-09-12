@@ -4,8 +4,8 @@ public class Aluno
 {
     private String nome;
     private int cpf;
-    private String nomePai;
-    private String nomeMae;
+    private String nome_pai;
+    private String nome_mae;
     private String naturalidade;
     private int numeroTelefone;
     private String endereco;
@@ -16,12 +16,12 @@ public class Aluno
     private Rota rota;
 
 
-    public Aluno(String nome, int cpf, String nomePai, String nomeMae, String naturalidade, int numeroTelefone, String endereco, Escola escola, int matricula, int serie, String turno, Rota rota)
+    public Aluno(String nome, int cpf, String nome_pai, String nome_mae, String naturalidade, int numeroTelefone, String endereco, Escola escola, int matricula, int serie, String turno, Rota rota)
     {
         this.nome = nome;
         this.cpf = cpf;
-        this.nomePai = nomePai;
-        this.nomeMae = nomeMae;
+        this.nome_pai = nome_pai;
+        this.nome_mae = nome_mae;
         this.naturalidade = naturalidade;
         this.numeroTelefone = numeroTelefone;
         this.endereco = endereco;
