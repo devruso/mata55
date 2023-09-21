@@ -44,6 +44,24 @@ public class Livraria {
         return false;
     }
 
+    public void emitirListagemMensal() {
+
+        System.out.println("Listagem Mensal de Livros:");
+
+        int totalQuantidadeLivros = 0;
+
+        for (Livro livro : listaDeLivros) {
+            System.out.println("Título: " + livro.getTitulo());
+            System.out.println("Autor: " + livro.getAutor());
+            System.out.println("Preço: " + livro.getPreco());
+            System.out.println("Estoque: " + livro.getEstoque());
+            System.out.println("----------------------------------");
+            totalQuantidadeLivros += livro.getEstoque();
+        }
+
+        System.out.println("Total de Livros em Estoque: " + totalQuantidadeLivros);
+    }
+
     public String getNome() {
         return nome;
     }
