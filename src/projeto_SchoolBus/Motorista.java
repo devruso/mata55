@@ -1,5 +1,6 @@
 package projeto_SchoolBus;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Motorista
@@ -21,7 +22,7 @@ public class Motorista
     private char[] habilitacao;
     private String num_habilitacao;
     private boolean isTerceirizado;
-    private Integer num_contrato;
+    private ArrayList<Contrato> num_contrato;
 
 
     public Motorista(String nome_civil, String nome, int cpf_cnpj, String nome_pai, String nome_mae, String naturalidade, int numero_contato, String endereco, char[] habilitacao, Date data_nascimento, String rua, String bairro, int numero_casa, String complemento, String num_habilitacao)
@@ -44,7 +45,7 @@ public class Motorista
 
     }
 
-    public Motorista(String nome_civil, int cpf_cnpj, String nome_pai, String nome_mae, String naturalidade, int numero_contato, String endereco, char[] habilitacao,  int num_contrato ,Date data_nascimento, String rua, String bairro, int numero_casa, String complemento, String num_habilitacao)
+    public Motorista(String nome_civil, int cpf_cnpj, String nome_pai, String nome_mae, String naturalidade, int numero_contato, String endereco, char[] habilitacao,  ArrayList<Contrato>  num_contrato ,Date data_nascimento, String rua, String bairro, int numero_casa, String complemento, String num_habilitacao)
     {
         this.nome_civil = nome_civil;
         this.nome = nome_civil;
@@ -67,7 +68,7 @@ public class Motorista
         return isTerceirizado;
     }
 
-    public void setNum_contrato(int num_contrato){
+    public void setNum_contrato(ArrayList<Contrato>  num_contrato){
         if(this.isTerceirizado){
             this.num_contrato = num_contrato;
         }else{

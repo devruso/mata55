@@ -42,4 +42,71 @@ public class Aluno
         this.turno = turno;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getNome_civil() {
+        return nome_civil;
+    }
+
+    public int getCpf() {
+        return cpf;
+    }
+
+    public Date getData_nascimento() {
+        return data_nascimento;
+    }
+
+    public String getNome_pai() {
+        return nome_pai;
+    }
+
+    public String getNome_mae() {
+        return nome_mae;
+    }
+
+    public String getNaturalidade() {
+        return naturalidade;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public int getNumero_casa() {
+        return numero_casa;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public Escola getEscola() {
+        return escola;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public int getSerie() {
+        return serie;
+    }
+
+    public String getTurno() {
+        return turno;
+    }
+
+    public Rota getRota() {
+        return rota;
+    }
 }
