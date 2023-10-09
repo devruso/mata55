@@ -15,7 +15,15 @@ public class ConversaoDeUnidadesDeArea {
     }
 
     static double acreParaPesQuadrados(int n){
-        return n *  43_560;
+        return n *  10.7639;
+    }
+
+    static double metroQuadradoParaAcre(int n){
+        return n * 0.000247105;
+    }
+
+    static double metroQuadradoParaCentimetroQuadrado(int n){
+        return n * 10000;
     }
 
 }
