@@ -1,4 +1,4 @@
-package lista_metodos_e_campos_estaticos.exercicio2;
+package lista_metodos_e_campos_estaticos.exercicio3;
 
 public class ConversaoDeUnidadesDeVolume {
 
