@@ -14,6 +14,14 @@ public class ConversaoDeUnidadesDeTempo {
         return n * 24;
     }
 
+    static int diaParaMinuto(int n){
+       return n * 1440;
+    }
+
+    static int diaParaSegundo(int n){
+        return n * 86400;
+    }
+
     static int semanaParaDia(int n){
         return n * 7;
     }
