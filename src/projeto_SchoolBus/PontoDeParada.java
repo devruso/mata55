@@ -20,7 +20,7 @@ public class PontoDeParada
         totalDeParadas++;
     }
 
-    public static int contadorDeParadas(){
+    public static int getTotalDeParadas(){
         return totalDeParadas;
     }
 
