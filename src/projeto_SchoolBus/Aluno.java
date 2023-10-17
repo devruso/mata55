@@ -20,7 +20,7 @@ public class Aluno
     private int matricula;
     private int serie;
     private String turno;
-    private Rota rota;
+    private PontoDeParada pontoDeParada;
 
 
     public Aluno(String nome,String nome_civil, int cpf, Date data_nascimento,String nome_pai, String nome_mae, String naturalidade, String telefone, String rua, String complemento, int numero_casa, String bairro,  int matricula, int serie, String turno)
@@ -106,7 +106,7 @@ public class Aluno
         return turno;
     }
 
-    public Rota getRota() {
-        return rota;
+    public PontoDeParada getPontoDeParada() {
+        return pontoDeParada;
     }
 }
