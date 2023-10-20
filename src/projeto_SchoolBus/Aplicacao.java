@@ -448,26 +448,42 @@ public class Aplicacao {
     }
     static Rota criaRota(){
       PontoDeParada pontoAtual;
-      ArrayList<PontoDeParada> rotasCriadas = new ArrayList<>();
+      ArrayList<PontoDeParada> pontosCriados = new ArrayList<>();
       int opcao;
-      int pontosCriados = 0;
+      int totalPontos = 0;
           System.out.println("Para criar uma rota é necessário adicionar ao menos 1 ponto de parada.");
       do{
           System.out.println("Para adicionar um ponto de parada digite 1. \n Para cancelar digite 0.");
           opcao = sc.nextInt();
           if(opcao == 1){
               pontoAtual = criaPontoDeParada();
-              rotasCriadas.add(pontoAtual);
+              pontosCriados.add(pontoAtual);
           }else{
-              if(pontosCriados < 1) {
+              if(totalPontos < 1) {
                   System.out.println("Necessario ao menos 1 ponto na rota");
               }else{
                   break;
               }
           }
-          pontosCriados++;
-      }while(opcao != 0 && pontosCriados > 0);
-      return new Rota(rotasCriadas);
+          totalPontos++;
+      }while(opcao != 0 && totalPontos > 0);
+      rota = new Rota(pontosCriados);
+      return rota;
+    }
+
+    static void calcularDemandaDeUmaRota(){
+        if(rota == null){
+            System.out.println("Não há rotas há terem demandas calculadas.");
+            System.out.println("Digite 1 para criar uma rota.");
+            int opcao = sc.nextInt();
+            sc.nextLine();
+            if(opcao == 1) {
+                rota = criaRota();
+                if(rota!=null)System.out.println("o total de demandas desta rota é: " + rota.demandaTotal());
+            }
+        }else{
+            System.out.println("o total de demandas desta rota é: " + rota.demandaTotal());
+        }
     }
 
     public static void main(String[] args) {
