@@ -12,18 +12,15 @@ public class Aluno
     private String nome_mae;
     private String naturalidade;
     private String telefone;
-    private String rua;
-    private int numero_casa;
-    private String complemento;
-    private String bairro;
     private Escola escola;
+    private Endereco endereco;
     private int matricula;
     private int serie;
     private String turno;
     private PontoDeParada pontoDeParada;
 
 
-    public Aluno(String nome,String nome_civil, int cpf, Date data_nascimento,String nome_pai, String nome_mae, String naturalidade, String telefone, String rua, String complemento, int numero_casa, String bairro,  int matricula, int serie, String turno)
+    public Aluno(String nome,String nome_civil, int cpf, Date data_nascimento,String nome_pai, String nome_mae, String naturalidade, String telefone, Endereco endereco , int matricula, int serie, String turno)
     {
         this.nome = nome;
         this.nome_civil = nome_civil;
@@ -33,10 +30,7 @@ public class Aluno
         this.nome_mae = nome_mae;
         this.naturalidade = naturalidade;
         this.telefone = telefone;
-        this.rua = rua;
-        this.numero_casa = numero_casa;
-        this.complemento = complemento;
-        this.bairro = bairro;
+        this.endereco = endereco;
         this.matricula = matricula;
         this.serie = serie;
         this.turno = turno;
@@ -74,20 +68,8 @@ public class Aluno
         return telefone;
     }
 
-    public String getRua() {
-        return rua;
-    }
-
-    public int getNumero_casa() {
-        return numero_casa;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public String getBairro() {
-        return bairro;
+    public Endereco getEndereco(){
+        return this.endereco;
     }
 
     public Escola getEscola() {
