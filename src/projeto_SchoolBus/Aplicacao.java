@@ -470,8 +470,7 @@ public class Aplicacao {
       rota = new Rota(pontosCriados);
       return rota;
     }
-
-    static void calcularDemandaDeUmaRota(){
+    static void calculaDemandaDeUmaRota(){
         if(rota == null){
             System.out.println("Não há rotas há terem demandas calculadas.");
             System.out.println("Digite 1 para criar uma rota.");
@@ -485,7 +484,12 @@ public class Aplicacao {
             System.out.println("o total de demandas desta rota é: " + rota.demandaTotal());
         }
     }
-
+    static void exibeTotalDeRotas(){
+        System.out.println("O total de rotas criadas é: "+ Rota.getRotasCriadas());
+    }
+    static void exibeTotalDePontosDeParada(){
+        System.out.println("O total de pontos de parada é: "+PontoDeParada.getTotalDeParadas());
+    }
     public static void main(String[] args) {
 
         do{
@@ -501,6 +505,9 @@ public class Aplicacao {
                 case 6 -> criaVeiculo();
                 case 7 -> criaPontoDeParada();
                 case 8 -> criaRota();
+                case 9 -> calculaDemandaDeUmaRota();
+                case 10 -> exibeTotalDeRotas();
+                case 11 -> exibeTotalDePontosDeParada();
 
             }
         }while(opcao != 12);
