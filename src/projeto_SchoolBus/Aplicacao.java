@@ -470,18 +470,6 @@ public class Aplicacao {
       return new Rota(rotasCriadas);
     }
 
-    static void adicionaPontoDeParadaARota(){
-        if(rota == null){
-            System.out.println("Não há rotas no momento. Deseja criar uma?");
-            System.out.println("Digite 1 para criar nova rota. \n Digite 2 para cancelar");
-            int opcao = sc.nextInt();
-            if(opcao == 1){
-                Rota novaRota = criaRota();
-            }
-        }
-    }
-
-
     public static void main(String[] args) {
 
         do{
