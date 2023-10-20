@@ -2,6 +2,7 @@ package projeto_SchoolBus;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -361,6 +362,91 @@ public class Aplicacao {
             return new Escola(nome, enderecoDoCliente,telefone,cnpj);
         }
     }
+    static Veiculo criaVeiculo(){
+        String placa;
+        int ano;
+        String modelo;
+        int capacidade;
+        boolean isAlugado;
+        if(contrato == null){
+            System.out.println("Não há contrato para vincular. É necessário um contrato para criar um veículo.");
+            System.out.println("Digite 1 para criar um novo contrato. Digite 2 para cancelar.");
+            int opcao = sc.nextInt();
+            if(opcao == 1){
+                contrato = criaContrato();
+                System.out.println("Digite a placa do veiculo: ");
+                placa = sc.nextLine();
+                System.out.println("Digite o ano do veiculo");
+                ano = sc.nextInt();
+                System.out.println("digite o modelo do veiculo:");
+                modelo= sc.nextLine();
+                System.out.println("Digite a capacidade do veiculo");
+                capacidade = sc.nextInt();
+                System.out.println("Digite se o veículo é alugado, com true ou false.");
+                isAlugado = sc.nextBoolean();
+                return new Veiculo(placa, ano, modelo, capacidade, isAlugado, contrato);
+            }else{
+                return null;
+            }
+        }else{
+        System.out.println("Digite a placa do veiculo: ");
+        placa = sc.nextLine();
+        System.out.println("Digite o ano do veiculo");
+        ano = sc.nextInt();
+        System.out.println("digite o modelo do veiculo:");
+        modelo= sc.nextLine();
+        System.out.println("Digite a capacidade do veiculo");
+        capacidade = sc.nextInt();
+        System.out.println("Digite se o veículo é alugado, com true ou false.");
+        isAlugado = sc.nextBoolean();
+        return new Veiculo(placa, ano, modelo, capacidade, isAlugado, contrato);
+    }
+    }
+    static PontoDeParada criaPontoDeParada(){
+        int id;
+        String nome;
+        double latitude;
+        double longitude;
+        ArrayList<Aluno> alunos = new ArrayList<>();
+
+        if(aluno == null){
+            System.out.println("Não há alunos para serem adicionados ao ponto de parada.");
+            System.out.println("Não é possível criar um ponto de parada sem pelo menos um aluno");
+            System.out.println("Digite 1 para criar um novo aluno. \n Digite 2 para cancelar.");
+            int opcao = sc.nextInt();
+            if(opcao == 1){
+                Aluno novoAluno = criaAluno();
+                System.out.println("Digite o id");
+                id = sc.nextInt();
+                System.out.println("Digite o nome do ponto");
+                nome = sc.nextLine();
+                nome = sc.nextLine();
+                System.out.println("Digite a latitude");
+                latitude = sc.nextDouble();
+                System.out.println("Digite a longitude");
+                longitude = sc.nextDouble();
+                alunos.add(novoAluno);
+                return new PontoDeParada(id, nome, latitude, longitude, alunos);
+            }else{
+                return null;
+            }
+        }else{
+            System.out.println("Digite o id");
+            id = sc.nextInt();
+            System.out.println("Digite o nome do ponto");
+            nome = sc.nextLine();
+            sc.nextLine();
+            System.out.println("Digite a latitude");
+            latitude = sc.nextDouble();
+            System.out.println("Digite a longitude");
+            longitude = sc.nextDouble();
+            alunos.add(aluno);
+            return new PontoDeParada(id, nome, latitude, longitude, alunos);
+        }
+
+    }
+
+
     public static void main(String[] args) {
 
         do{
@@ -373,6 +459,8 @@ public class Aplicacao {
                 case 3 -> criaMotorista();
                 case 4 -> criaContrato();
                 case 5 -> criaEscola();
+                case 6 -> criaVeiculo();
+                case 7 -> criaPontoDeParada();
             }
         }while(opcao != 12);
 
