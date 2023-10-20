@@ -6,11 +6,11 @@ public class Escola
 {
     private String nome;
     private Endereco endereco;
-    private int telefone;
-    private int cnpj;
+    private  String telefone;
+    private String cnpj;
     private ArrayList<Aluno> alunos;
 
-    public Escola(String nome, Endereco endereco, int telefone, int cnpj)
+    public Escola(String nome, Endereco endereco,  String telefone, String cnpj)
     {
         this.nome = nome;
         this.endereco = endereco;
