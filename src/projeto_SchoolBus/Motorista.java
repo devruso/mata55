@@ -9,12 +9,6 @@ public class Motorista
     private String nome;
     private int cpf_cnpj;
     private Date data_nascimento;
-    private String rua;
-    private String bairro;
-    private int numero_casa;
-
-    private String complemento;
-
     private String nome_pai;
     private String nome_mae;
     private String naturalidade;
@@ -23,19 +17,18 @@ public class Motorista
     private String num_habilitacao;
     private boolean isTerceirizado;
     private ArrayList<Contrato> num_contrato;
+    private Endereco endereco;
 
 
-    public Motorista(String nome_civil, String nome, int cpf_cnpj, String nome_pai, String nome_mae, String naturalidade, int numero_contato, String endereco, char[] habilitacao, Date data_nascimento, String rua, String bairro, int numero_casa, String complemento, String num_habilitacao)
-    {
+    public Motorista(String nome_civil, String nome, Endereco endereco, int cpf_cnpj, String nome_pai,
+                     String nome_mae, String naturalidade, int numero_contato, char[] habilitacao, Date data_nascimento,
+                     String rua, String bairro, int numero_casa, String complemento, String num_habilitacao){
         this.nome_civil = nome_civil;
         this.nome = nome;
         this.cpf_cnpj = cpf_cnpj;
         this.nome_pai = nome_pai;
         this.nome_mae = nome_mae;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.numero_casa  = numero_casa;
-        this.complemento = complemento;
+        this.endereco = endereco;
         this.naturalidade = naturalidade;
         this.numero_contato = numero_contato;
         this.habilitacao = habilitacao;
@@ -45,17 +38,16 @@ public class Motorista
 
     }
 
-    public Motorista(String nome_civil, int cpf_cnpj, String nome_pai, String nome_mae, String naturalidade, int numero_contato, String endereco, char[] habilitacao,  ArrayList<Contrato>  num_contrato ,Date data_nascimento, String rua, String bairro, int numero_casa, String complemento, String num_habilitacao)
-    {
+    public Motorista(String nome_civil, int cpf_cnpj, String nome_pai, String nome_mae, String naturalidade,
+                     int numero_contato, Endereco endereco, char[] habilitacao,  ArrayList<Contrato>  num_contrato ,
+                     Date data_nascimento, String rua, String bairro,
+                     int numero_casa, String complemento, String num_habilitacao){
         this.nome_civil = nome_civil;
         this.nome = nome_civil;
         this.cpf_cnpj = cpf_cnpj;
         this.nome_pai = nome_pai;
         this.nome_mae = nome_mae;
-        this.rua = rua;
-        this.bairro = bairro;
-        this.numero_casa  = numero_casa;
-        this.complemento = complemento;
+        this.endereco = new Endereco(rua, numero_casa, complemento, bairro);
         this.naturalidade = naturalidade;
         this.numero_contato = numero_contato;
         this.habilitacao = habilitacao;
