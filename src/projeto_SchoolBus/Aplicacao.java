@@ -20,7 +20,7 @@ public class Aplicacao {
     static PontoDeParada pontoDeParada;
 
     static void menu(){
-        System.out.println("Bem vindo ao menu School Bus");
+        System.out.println("Bem vindo ao menu School Bus\n");
         System.out.println("1. Criar Endereco");
         System.out.println("2. Criar Aluno");
         System.out.println("3. Criar Motorista");
@@ -32,7 +32,7 @@ public class Aplicacao {
         System.out.println("9. Calcular Demanda de Rota");
         System.out.println("10. Exibir Total de Rotas Criadas");
         System.out.println("11. Exibir Total de Pontos de Parada Criados");
-        System.out.println("12. Sair da aplicacao");
+        System.out.println("12. Sair da aplicacao\n");
     }
     static Endereco criaEndereco(){
         String rua;
@@ -202,7 +202,6 @@ public class Aplicacao {
             }
         }
     }
-
     static Motorista criaMotorista(){
         String nome;
         String nome_civil;
@@ -249,7 +248,7 @@ public class Aplicacao {
             try {
                 data_nascimento = sdf.parse(dataNascimentoString);
             } catch (ParseException e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Formato de data errado.");
             }
             System.out.println("Numero de habilitacao do motorista:");
             num_habilitacao = sc.nextLine();
@@ -286,7 +285,7 @@ public class Aplicacao {
             try {
                 data_nascimento = sdf.parse(dataNascimentoString);
             } catch (ParseException e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Formato de data errado.");
             }
             System.out.println("Numero de habilitacao do motorista:");
             num_habilitacao = sc.nextLine();
@@ -294,23 +293,86 @@ public class Aplicacao {
             return new Motorista(nome_civil,nome,enderecoDoCliente,cpf_cnpj,nome_pai,nome_mae,naturalidade,numero_contato,habilitacao,data_nascimento,num_habilitacao);
         }
     }
+    static Contrato criaContrato(){
+        int num_contrato;
+        Date data_inicio;
+        Date data_fim;
+        double valor;
 
+        System.out.println("Digite o numero do contrato:");
+        num_contrato = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Data de inicio do contrato. Use o formato dd/MM/aaaa");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String dataInicioString = sc.nextLine();
+        try {
+            data_inicio = sdf.parse(dataInicioString);
+        } catch (ParseException e) {
+            throw new RuntimeException("Formato de data inválido.");
+        }
+        System.out.println("Data de finalização do contrato. Use o formato dd/MM/aaaa");
+
+        String dataFimString = sc.nextLine();
+        try{
+            data_fim = sdf.parse(dataFimString);
+        }catch (ParseException e){
+            throw new RuntimeException("Formato de data inválido");
+        }
+        System.out.println("Digite o valor do contrato:");
+        valor = sc.nextDouble();
+        return new Contrato(num_contrato,data_inicio,data_fim,valor);
+    }
+    static Escola criaEscola(){
+        String nome;
+        String telefone;
+        String cnpj;
+        Endereco endereco;
+
+        //Caso o cliente nao tenha cadastrado endereco ou queira criar uma agregacao forte
+        String rua;
+        String bairro;
+        int numero_casa;
+        String complemento;
+
+        if(enderecoDoCliente == null){
+                System.out.println("Não há endereco cadastrado.\n Não é possível cadastrar um motorista sem endereco. ");
+                System.out.println("Digite 1 para cadastrar uma escola com endereco, ou 2 para não cadastrar.");
+                int resposta = sc.nextInt();
+                sc.nextLine();
+                if(resposta == 1){
+                    endereco = criaEndereco();
+                    System.out.println("Insira o nome da escola: ");
+                    nome = sc.nextLine();
+                    System.out.println("Insira o numero de telefone da escola. Padrão (XX) XXXXX-XXXX");
+                    telefone = sc.nextLine();
+                    System.out.println("Digite o cnpj da escola:");
+                    cnpj = sc.nextLine();
+                    return new Escola(nome,endereco, telefone, cnpj);
+                }else{
+                    return null;
+                }
+        }else{
+            System.out.println("Insira o nome da escola: ");
+            nome = sc.nextLine();
+            System.out.println("Insira o numero de telefone da escola. Padrão (XX) XXXXX-XXXX");
+            telefone = sc.nextLine();
+            System.out.println("Digite o cnpj da escola:");
+            cnpj = sc.nextLine();
+            return new Escola(nome, enderecoDoCliente,telefone,cnpj);
+        }
+    }
     public static void main(String[] args) {
 
         do{
             menu();
             opcao = sc.nextInt();
             sc.nextLine();
-            switch (opcao){
-                case 1:
-                    criaEndereco();
-                    break;
-                case 2:
-                    criaAluno();
-                    break;
-                case 3:
-                    criaMotorista();
-                    break;
+            switch (opcao) {
+                case 1 -> criaEndereco();
+                case 2 -> criaAluno();
+                case 3 -> criaMotorista();
+                case 4 -> criaContrato();
+                case 5 -> criaEscola();
             }
         }while(opcao != 12);
 
