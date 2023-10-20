@@ -6,7 +6,7 @@ public class Aluno
 {
     private String nome;
     private String nome_civil;
-    private int cpf;
+    private String cpf;
     private Date data_nascimento;
     private String nome_pai;
     private String nome_mae;
@@ -20,7 +20,7 @@ public class Aluno
     private PontoDeParada pontoDeParada;
 
 
-    public Aluno(String nome,String nome_civil, int cpf, Date data_nascimento,String nome_pai, String nome_mae,
+    public Aluno(String nome,String nome_civil, String cpf, Date data_nascimento,String nome_pai, String nome_mae,
                  String naturalidade, String telefone, Endereco endereco , int matricula, int serie, String turno)
     {
         this.nome = nome;
@@ -37,7 +37,7 @@ public class Aluno
         this.turno = turno;
     }
 
-    public Aluno(String nome, String nome_civil, int cpf, Date data_nascimento, String nome_pai, String nome_mae,
+    public Aluno(String nome, String nome_civil, String cpf, Date data_nascimento, String nome_pai, String nome_mae,
                  String naturalidade, String telefone, Escola escola,String rua, String bairro,
                  int numero_casa, String complemento,
                  Endereco endereco, int matricula, int serie, String turno) {
@@ -65,7 +65,7 @@ public class Aluno
         return this.nome_civil;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return this.cpf;
     }
 
