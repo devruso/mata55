@@ -20,7 +20,8 @@ public class Aluno
     private PontoDeParada pontoDeParada;
 
 
-    public Aluno(String nome,String nome_civil, int cpf, Date data_nascimento,String nome_pai, String nome_mae, String naturalidade, String telefone, Endereco endereco , int matricula, int serie, String turno)
+    public Aluno(String nome,String nome_civil, int cpf, Date data_nascimento,String nome_pai, String nome_mae,
+                 String naturalidade, String telefone, Endereco endereco , int matricula, int serie, String turno)
     {
         this.nome = nome;
         this.nome_civil = nome_civil;
@@ -31,6 +32,26 @@ public class Aluno
         this.naturalidade = naturalidade;
         this.telefone = telefone;
         this.endereco = endereco;
+        this.matricula = matricula;
+        this.serie = serie;
+        this.turno = turno;
+    }
+
+    public Aluno(String nome, String nome_civil, int cpf, Date data_nascimento, String nome_pai, String nome_mae,
+                 String naturalidade, String telefone, Escola escola,String rua, String bairro,
+                 int numero_casa, String complemento,
+                 Endereco endereco, int matricula, int serie, String turno) {
+
+        this.nome = nome;
+        this.nome_civil = nome_civil;
+        this.cpf = cpf;
+        this.data_nascimento = data_nascimento;
+        this.nome_pai = nome_pai;
+        this.nome_mae = nome_mae;
+        this.naturalidade = naturalidade;
+        this.telefone = telefone;
+        this.escola = escola;
+        this.endereco = new Endereco(rua, numero_casa, complemento, bairro);
         this.matricula = matricula;
         this.serie = serie;
         this.turno = turno;
