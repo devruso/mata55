@@ -203,6 +203,98 @@ public class Aplicacao {
         }
     }
 
+    static Motorista criaMotorista(){
+        String nome;
+        String nome_civil;
+        Endereco endereco;
+        String cpf_cnpj;
+        String nome_pai;
+        String nome_mae;
+        String naturalidade;
+        String numero_contato;
+        char[] habilitacao;
+        Date data_nascimento;
+        String num_habilitacao;
+
+        //Caso o cliente nao tenha cadastrado endereco ou queira criar uma agregacao forte
+        String rua;
+        String bairro;
+        int numero_casa;
+        String complemento;
+
+        if(enderecoDoCliente == null){
+            System.out.println("Não há endereco cadastrado.\n Não é possível cadastrar um motorista sem endereco. ");
+            System.out.println("Digite 1 para cadastrar um motorista com endereco, ou 2 para não cadastrar.");
+            int resposta = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Insira o nome do motorista:");
+            nome = sc.nextLine();
+            System.out.println("Insira o nome social do motorista:");
+            nome_civil = sc.nextLine();
+            System.out.println("Insira o cpf ou cnpj do motorista:");
+            cpf_cnpj = sc.nextLine();
+            System.out.println("Nome do pai do motorista:");
+            nome_pai = sc.nextLine();
+            System.out.println("Nome da mãe do motorista:");
+            nome_mae = sc.nextLine();
+            System.out.println("Naturalidade do motorista:");
+            naturalidade = sc.nextLine();
+            System.out.println("Numero de contato do motorista. (XX) XXXXX-XXXX");
+            numero_contato = sc.nextLine();
+            System.out.println("Carteira de habilitacao do motorista. Adicione o caractere.");
+            habilitacao = sc.nextLine().toCharArray();
+            System.out.println("Insira sua data de nascimento no fomrato dd/MM/aaaa");
+            String dataNascimentoString = sc.nextLine();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                data_nascimento = sdf.parse(dataNascimentoString);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("Numero de habilitacao do motorista:");
+            num_habilitacao = sc.nextLine();
+            System.out.println("Insira a rua:");
+            rua = sc.nextLine();
+            System.out.println("Insira o número:");
+            numero_casa = sc.nextInt();
+            sc.nextLine(); // Consumir a quebra de linha
+            System.out.println("Insira o complemento:");
+            complemento = sc.nextLine();
+            System.out.println("Insira o bairro:");
+            bairro = sc.nextLine();
+            return new Motorista(nome_civil,cpf_cnpj,nome_pai,nome_mae,naturalidade,numero_contato,habilitacao, data_nascimento,rua,bairro,numero_casa,complemento,num_habilitacao);
+        }else{
+            System.out.println("Insira o nome do motorista:");
+            nome = sc.nextLine();
+            System.out.println("Insira o nome social do motorista:");
+            nome_civil = sc.nextLine();
+            System.out.println("Insira o cpf ou cnpj do motorista:");
+            cpf_cnpj = sc.nextLine();
+            System.out.println("Nome do pai do motorista:");
+            nome_pai = sc.nextLine();
+            System.out.println("Nome da mãe do motorista:");
+            nome_mae = sc.nextLine();
+            System.out.println("Naturalidade do motorista:");
+            naturalidade = sc.nextLine();
+            System.out.println("Numero de contato do motorista. (XX) XXXXX-XXXX");
+            numero_contato = sc.nextLine();
+            System.out.println("Carteira de habilitacao do motorista. Adicione o caractere.");
+            habilitacao = sc.nextLine().toCharArray();
+            System.out.println("Insira sua data de nascimento no fomrato dd/MM/aaaa");
+            String dataNascimentoString = sc.nextLine();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                data_nascimento = sdf.parse(dataNascimentoString);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("Numero de habilitacao do motorista:");
+            num_habilitacao = sc.nextLine();
+
+            return new Motorista(nome_civil,nome,enderecoDoCliente,cpf_cnpj,nome_pai,nome_mae,naturalidade,numero_contato,habilitacao,data_nascimento,num_habilitacao);
+        }
+    }
+
     public static void main(String[] args) {
 
         do{
@@ -215,6 +307,9 @@ public class Aplicacao {
                     break;
                 case 2:
                     criaAluno();
+                    break;
+                case 3:
+                    criaMotorista();
                     break;
             }
         }while(opcao != 12);
