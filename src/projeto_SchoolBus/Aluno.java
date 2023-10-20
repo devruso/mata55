@@ -37,15 +37,15 @@ public class Aluno
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public String getNome_civil() {
-        return nome_civil;
+        return this.nome_civil;
     }
 
     public int getCpf() {
-        return cpf;
+        return this.cpf;
     }
 
     public Date getData_nascimento() {
@@ -53,19 +53,19 @@ public class Aluno
     }
 
     public String getNome_pai() {
-        return nome_pai;
+        return this.nome_pai;
     }
 
     public String getNome_mae() {
-        return nome_mae;
+        return this.nome_mae;
     }
 
     public String getNaturalidade() {
-        return naturalidade;
+        return this.naturalidade;
     }
 
     public String getTelefone() {
-        return telefone;
+        return this.telefone;
     }
 
     public Endereco getEndereco(){
@@ -73,22 +73,22 @@ public class Aluno
     }
 
     public Escola getEscola() {
-        return escola;
+        return this.escola;
     }
 
     public int getMatricula() {
-        return matricula;
+        return this.matricula;
     }
 
     public int getSerie() {
-        return serie;
+        return this.serie;
     }
 
     public String getTurno() {
-        return turno;
+        return this.turno;
     }
 
     public PontoDeParada getPontoDeParada() {
-        return pontoDeParada;
+        return this.pontoDeParada;
     }
 }
