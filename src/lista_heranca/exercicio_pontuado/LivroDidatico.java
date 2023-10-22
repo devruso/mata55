@@ -14,4 +14,9 @@ public class LivroDidatico extends Livro{
        return super.toString() + "\n Area: " + this.area;
     }
 
+    @Override
+    public String precoFinal(int taxa){
+       return super.precoFinal(10);
+    }
+
 }

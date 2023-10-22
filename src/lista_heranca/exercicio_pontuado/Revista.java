@@ -19,4 +19,12 @@ public class Revista {
                 "\n Preco: " + this.preco;
     }
 
+    public String precoFinal(){
+        int taxa = 10;
+
+       return "Titulo: " + this.nome+ "\n Preco original: "+ this.preco +
+                "\n Imposto de serviço:" + taxa +
+                "\n Preço final: " + this.preco * ( 1 + taxa/ 100);
+    }
+
 }
