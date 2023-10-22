@@ -9,7 +9,7 @@ public class LivroDidatico extends Livro{
         super(nome, autor_principal, editora, resumo, preco);
         this.area = area;
     }
-
+    @Override
     public String toString(){
        return super.toString() + "\n Area: " + this.area;
     }
