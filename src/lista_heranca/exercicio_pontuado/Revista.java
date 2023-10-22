@@ -13,4 +13,10 @@ public class Revista {
         this.periodicidade = periodicidade;
         this.preco = preco;
     }
+
+    public String toString(){
+        return "Nome : "+ this.nome + "\n Editora: " + this.editora + "\n Periodicidade: " + this.periodicidade +
+                "\n Preco: " + this.preco;
+    }
+
 }

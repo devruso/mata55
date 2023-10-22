@@ -15,4 +15,12 @@ public class Livro {
         this.resumo = resumo;
         this.preco = preco;
     }
+
+    public String toString(){
+        return "Nome: " + this.nome + "\n Autor principal: " + this.autor_principal +
+                "\n Editora: " + this.editora + "\n Resumo: " +this.resumo + "\n Preço: " +this.preco;
+    }
+
+
+
 }
