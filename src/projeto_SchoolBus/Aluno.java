@@ -4,10 +4,7 @@ import java.util.Date;
 
 public class Aluno extends PessoaFisica
 {
-    private String nome_civil;
     private String cpf;
-    private Date data_nascimento;
-    private String naturalidade;
     private Escola escola;
     private int matricula;
     private int serie;
@@ -15,10 +12,9 @@ public class Aluno extends PessoaFisica
     private PontoDeParada pontoDeParada;
 
     public Aluno(String nome_oficial, String cpf_cnpj, Endereco endereco, String telefone, String nome, String mae,
-                 String pai, String naturalidade, Date data_nascimento,  String nome_civil, String cpf,
+                 String pai, String naturalidade, Date data_nascimento, String cpf,
                 Escola escola, int matricula, int serie, String turno, PontoDeParada pontoDeParada) {
         super(nome_oficial, cpf_cnpj, endereco, telefone, nome, mae, pai, naturalidade, data_nascimento);
-        this.nome_civil = nome_civil;
         this.cpf = cpf;
         this.escola = escola;
         this.matricula = matricula;
@@ -27,23 +23,10 @@ public class Aluno extends PessoaFisica
         this.pontoDeParada = pontoDeParada;
     }
 
-
-    public String getNome_civil() {
-        return this.nome_civil;
-    }
-
     public String getCpf() {
         return this.cpf;
     }
 
-    public Date getData_nascimento() {
-        return data_nascimento;
-    }
-
-
-    public String getNaturalidade() {
-        return this.naturalidade;
-    }
 
     public Escola getEscola() {
         return this.escola;
