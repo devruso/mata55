@@ -67,142 +67,42 @@ public class Aplicacao {
         int matricula;
         int serie;
         String turno;
-        // caso nao tenha endereco cadastrado:
-        String rua;
-        String bairro;
-        int numero_casa;
-        String complemento;
 
-        if(enderecoDoCliente == null){
-            System.out.println("Não há endereco cadastrado.\n Não é possível cadastrar um aluno sem endereco. ");
-            System.out.println("Digite 1 para cadastrar um aluno com endereco, ou 2 para não cadastrar.");
-            int resposta = sc.nextInt();
-            sc.nextLine();
-            if (resposta == 1){
-                System.out.println("Insira o nome do aluno:");
-                nome = sc.nextLine();
-                System.out.println("Insira o nome civil/social do aluno:");
-                nome_civil = sc.nextLine();
-                System.out.println("Insira o CPF:");
-                cpf = sc.nextLine();
-                System.out.println("Insira a data de nascimento (no formato dd/mm/yyyy):");
-                String dataNascimentoString = sc.nextLine();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    data_nascimento = sdf.parse(dataNascimentoString);
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-                System.out.println("Insira o nome do seu pai:");
-                nome_pai = sc.nextLine();
-                System.out.println("Insira o nome da sua mãe: ");
-                nome_mae=sc.nextLine();
-                System.out.println("Insira sua naturalidade:");
-                naturalidade = sc.nextLine();
-                System.out.println("Insira o telefone do aluno. Formato: XX XXXXX-XXXX");
-                telefone = sc.nextLine();
-                System.out.println("Insira a matricula do aluno");
-                matricula = sc.nextInt();
-                sc.nextLine();
-                System.out.println("insira a série do aluno:");
-                serie = sc.nextInt();
-                sc.nextLine();
-                System.out.println("Insira do turno do aluno. Matutino ou Vespertino.");
-                turno = sc.nextLine();
-                System.out.println("Insira a rua:");
-                rua = sc.nextLine();
-                System.out.println("Insira o número:");
-                numero_casa = sc.nextInt();
-                sc.nextLine(); // Consumir a quebra de linha
-                System.out.println("Insira o complemento:");
-                complemento = sc.nextLine();
-                System.out.println("Insira o bairro:");
-                bairro = sc.nextLine();
-                return new Aluno(nome, nome_civil, cpf, data_nascimento,nome_pai,nome_mae, naturalidade, telefone, new Endereco(rua,numero_casa, complemento,bairro), matricula, serie, turno);
-            }else{
-                return null;
-            }
-        }else{
-            System.out.println("Já existe um endereco cadastrado. deseja cadastrar um novo?");
-            System.out.println("1 - Cadastrar aluno com outro endereco \n 2 - Utilizar endereco cadastrado");
-            int resposta = sc.nextInt();
-            if(resposta == 1){
-                System.out.println("Insira o nome do aluno:");
-                nome = sc.nextLine();
-                System.out.println("Insira o nome civil/social do aluno:");
-                nome_civil = sc.nextLine();
-                System.out.println("Insira o CPF:");
-                cpf = sc.nextLine();
-                System.out.println("Insira a data de nascimento (no formato dd/mm/yyyy):");
-                String dataNascimentoString = sc.nextLine();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    data_nascimento = sdf.parse(dataNascimentoString);
-                } catch (ParseException e) {
-                    throw new RuntimeException("Formato da data inválido");
-                }
-                System.out.println("Insira o nome do seu pai:");
-                nome_pai = sc.nextLine();
-                System.out.println("Insira o nome da sua mãe: ");
-                nome_mae=sc.nextLine();
-                System.out.println("Insira sua naturalidade:");
-                naturalidade = sc.nextLine();
-                System.out.println("Insira o telefone do aluno. Formato: XX XXXXX-XXXX");
-                telefone = sc.nextLine();
-                System.out.println("Insira a matricula do aluno");
-                matricula = sc.nextInt();
-                sc.nextLine();
-                System.out.println("insira a série do aluno:");
-                serie = sc.nextInt();
-                sc.nextLine();
-                System.out.println("Insira do turno do aluno. Matutino ou Vespertino.");
-                turno = sc.nextLine();
-                System.out.println("Insira a rua:");
-                rua = sc.nextLine();
-                System.out.println("Insira o número:");
-                numero_casa = sc.nextInt();
-                sc.nextLine(); // Consumir a quebra de linha
-                System.out.println("Insira o complemento:");
-                complemento = sc.nextLine();
-                System.out.println("Insira o bairro:");
-                bairro = sc.nextLine();
-                return new Aluno(nome, nome_civil, cpf, data_nascimento,nome_pai,nome_mae, naturalidade, telefone, new Endereco(rua,numero_casa, complemento,bairro), matricula, serie, turno);
-            }else{
-                System.out.println("Insira o nome do aluno:");
-                nome = sc.nextLine();
-                sc.nextLine();
-                System.out.println("Insira o nome civil/social do aluno:");
-                nome_civil = sc.nextLine();
-                System.out.println("Insira o CPF:");
-                cpf = sc.nextLine();
-                System.out.println("Insira a data de nascimento (no formato dd/mm/yyyy):");
-                String dataNascimentoString = sc.nextLine();
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    data_nascimento = sdf.parse(dataNascimentoString);
-                } catch (ParseException e) {
-                    throw new RuntimeException("Formato da data inválido");
-                }
-                System.out.println("Insira o nome do seu pai:");
-                nome_pai = sc.nextLine();
-                System.out.println("Insira o nome da sua mãe: ");
-                nome_mae=sc.nextLine();
-                System.out.println("Insira sua naturalidade:");
-                naturalidade = sc.nextLine();
-                System.out.println("Insira o telefone do aluno. Formato: XX XXXXX-XXXX");
-                telefone = sc.nextLine();
-                System.out.println("Insira a matricula do aluno");
-                matricula = sc.nextInt();
-                sc.nextLine();
-                System.out.println("insira a série do aluno:");
-                serie = sc.nextInt();
-                sc.nextLine();
-                System.out.println("Insira do turno do aluno. Matutino ou Vespertino.");
-                turno = sc.nextLine();
-                aluno = new Aluno(nome, nome_civil, cpf, data_nascimento,nome_pai,nome_mae, naturalidade, telefone, enderecoDoCliente, matricula, serie, turno);
-                return aluno;
-            }
+        System.out.println("Insira o nome do aluno:");
+        nome = sc.nextLine();
+        System.out.println("Insira o nome civil/social do aluno:");
+        nome_civil = sc.nextLine();
+        System.out.println("Insira o CPF:");
+        cpf = sc.nextLine();
+        System.out.println("Insira a data de nascimento (no formato dd/mm/yyyy):");
+        String dataNascimentoString = sc.nextLine();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            data_nascimento = sdf.parse(dataNascimentoString);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
+        System.out.println("Insira o nome do seu pai:");
+        nome_pai = sc.nextLine();
+        System.out.println("Insira o nome da sua mãe: ");
+        nome_mae=sc.nextLine();
+        System.out.println("Insira sua naturalidade:");
+        naturalidade = sc.nextLine();
+        System.out.println("Insira o telefone do aluno. Formato: XX XXXXX-XXXX");
+        telefone = sc.nextLine();
+        System.out.println("Insira a matricula do aluno");
+        matricula = sc.nextInt();
+        sc.nextLine();
+        System.out.println("insira a série do aluno:");
+        serie = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Insira do turno do aluno. Matutino ou Vespertino.");
+        turno = sc.nextLine();
+        endereco = criaEndereco();
+        escola = criaEscola();
+        pontoDeParada = criaPontoDeParada();
+
+        return new Aluno(nome_civil, cpf, endereco,telefone,nome,nome_mae,nome_pai, naturalidade, data_nascimento,escola, matricula, serie, turno, pontoDeParada);
     }
     static Motorista criaMotorista(){
         String nome;
