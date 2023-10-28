@@ -7,6 +7,12 @@ public class Pessoa {
     private Endereco endereco;
     private String telefone;
 
+    public Pessoa(String nome_oficial, String cpf_cnpj, Endereco endereco, String telefone) {
+        this.nome_oficial = nome_oficial;
+        this.cpf_cnpj = cpf_cnpj;
+        this.endereco = endereco;
+        this.telefone = telefone;
+    }
 
     protected String getNome_oficial(){
         return this.nome_oficial;
