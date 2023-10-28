@@ -1,9 +1,8 @@
 package lista_heranca.exercicio_pontuado;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class aplicacaoLivraria {
+public class AplicacaoLivraria {
     public String nome_da_livraria = "Livraria luz do sol";
 
     static void imprimirTitulos(){
