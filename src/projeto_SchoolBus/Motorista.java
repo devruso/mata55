@@ -3,57 +3,21 @@ package projeto_SchoolBus;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Motorista
+public class Motorista extends PessoaFisica
 {
-    private String nome_civil;
-    private String nome;
-    private String cpf_cnpj;
-    private Date data_nascimento;
-    private String nome_pai;
-    private String nome_mae;
-    private String naturalidade;
-    private String numero_contato;
     private char[] habilitacao;
     private String num_habilitacao;
     private boolean isTerceirizado;
     private ArrayList<Contrato> num_contrato;
-    private Endereco endereco;
 
-
-    public Motorista(String nome_civil, String nome, Endereco endereco, String cpf_cnpj, String nome_pai,
-                     String nome_mae, String naturalidade, String numero_contato, char[] habilitacao, Date data_nascimento,
-                      String num_habilitacao){
-        this.nome_civil = nome_civil;
-        this.nome = nome;
-        this.cpf_cnpj = cpf_cnpj;
-        this.nome_pai = nome_pai;
-        this.nome_mae = nome_mae;
-        this.endereco = endereco;
-        this.naturalidade = naturalidade;
-        this.numero_contato = numero_contato;
+    public Motorista(String nome_oficial, String cpf_cnpj, Endereco endereco, String telefone, String nome, String mae,
+                     String pai, String naturalidade, Date data_nascimento, char[] habilitacao, String num_habilitacao,
+                     boolean isTerceirizado, ArrayList<Contrato> num_contrato) {
+        super(nome_oficial, cpf_cnpj, endereco, telefone, nome, mae, pai, naturalidade, data_nascimento);
         this.habilitacao = habilitacao;
         this.num_habilitacao = num_habilitacao;
-        this.isTerceirizado = false;
-        this.num_contrato = null;
-
-    }
-
-    public Motorista(String nome_civil, String cpf_cnpj, String nome_pai, String nome_mae, String naturalidade,
-                     String numero_contato, char[] habilitacao,
-                     Date data_nascimento, String rua, String bairro,
-                     int numero_casa, String complemento, String num_habilitacao){
-        this.nome_civil = nome_civil;
-        this.nome = nome_civil;
-        this.cpf_cnpj = cpf_cnpj;
-        this.nome_pai = nome_pai;
-        this.nome_mae = nome_mae;
-        this.data_nascimento = data_nascimento;
-        this.endereco = new Endereco(rua, numero_casa, complemento, bairro);
-        this.naturalidade = naturalidade;
-        this.numero_contato = numero_contato;
-        this.habilitacao = habilitacao;
-        this.num_habilitacao = num_habilitacao;
-        this.isTerceirizado = true;
+        this.isTerceirizado = isTerceirizado;
+        this.num_contrato = num_contrato;
     }
 
     public boolean isTerceirizado() {
