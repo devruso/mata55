@@ -2,20 +2,14 @@ package projeto_SchoolBus;
 
 import java.util.ArrayList;
 
-public class Escola
+public class Escola extends PessoaJuridica
 {
-    private String nome;
-    private Endereco endereco;
-    private  String telefone;
-    private String cnpj;
     private ArrayList<Aluno> alunos;
 
-    public Escola(String nome, Endereco endereco,  String telefone, String cnpj)
-    {
-        this.nome = nome;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.cnpj = cnpj;
+    public Escola(String nome_oficial, String cpf_cnpj, Endereco endereco, String telefone, String nome_fantasia,
+                  int num_funcionario,ArrayList<Aluno> alunos){
+        super(nome_oficial, cpf_cnpj, endereco, telefone, nome_fantasia, num_funcionario);
+        this.alunos = alunos;
     }
 
     public void matricularAluno(Aluno aluno){
@@ -31,7 +25,7 @@ public class Escola
         for (Aluno aluno: this.alunos) {
             System.out.println(aluno.getNome());
             System.out.println(aluno.getMatricula());
-            System.out.println(aluno.getCpf());
+            System.out.println(aluno.getCpf_cnpj());
             System.out.println(aluno.getSerie());
         }
     }
