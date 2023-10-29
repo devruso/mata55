@@ -20,6 +20,12 @@ public class Motorista extends PessoaFisica
         this.num_contrato = num_contrato;
     }
 
+    @Override
+    public String apresentarDados(){
+        return super.apresentarDados() + "\nHabilitacão (oes): " + this.habilitacao + "\nNúmero da habilitação: "+ this.num_habilitacao +
+                "\nProfissional terceirizado: "+this.isTerceirizado + "\nNumeros de contrato: " + this.num_contrato;
+    }
+
     public boolean isTerceirizado() {
         return isTerceirizado;
     }

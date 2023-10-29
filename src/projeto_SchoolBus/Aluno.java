@@ -20,6 +20,12 @@ public class Aluno extends PessoaFisica
         this.pontoDeParada = pontoDeParada;
     }
 
+    @Override
+    public String apresentarDados(){
+        return super.apresentarDados() + "\nEscola: " + this.escola + "\nMatricula : " + this.matricula + "\nSerie: " + this.serie
+                + "\nTurno: " + this.turno + "\nPonto de parada: "  + this.pontoDeParada;
+    }
+
     public Escola getEscola() {
         return this.escola;
     }

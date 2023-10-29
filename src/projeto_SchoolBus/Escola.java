@@ -12,6 +12,11 @@ public class Escola extends PessoaJuridica
         this.alunos = alunos;
     }
 
+    @Override
+    public String apresentarDados(){
+        return super.apresentarDados() + "\nAlunos: " + this.alunos;
+    }
+
     public void matricularAluno(Aluno aluno){
         if(!this.alunos.contains(aluno)){
             this.alunos.add(aluno);

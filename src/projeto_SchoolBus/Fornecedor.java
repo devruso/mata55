@@ -11,4 +11,11 @@ public class Fornecedor extends PessoaJuridica {
         super(nome_oficial, cpf_cnpj, endereco, telefone, nome_fantasia, num_funcionario);
         this.contratos = contratos;
     }
+
+    @Override
+    public String apresentarDados(){
+        return "\nContratos: " + this.contratos;
+    }
+
+
 }
