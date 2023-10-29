@@ -22,7 +22,23 @@ public class PessoaFisica extends Pessoa {
         this.data_nascimento = data_nascimento;
     }
 
+    public String getNome() {
+        return nome;
+    }
 
+    public String getMae() {
+        return mae;
+    }
 
+    public String getPai() {
+        return pai;
+    }
 
+    public String getNaturalidade() {
+        return naturalidade;
+    }
+
+    public Date getData_nascimento() {
+        return data_nascimento;
+    }
 }
