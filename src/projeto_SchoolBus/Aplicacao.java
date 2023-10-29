@@ -189,39 +189,25 @@ public class Aplicacao {
         String telefone;
         String cnpj;
         Endereco endereco;
+        String nome_fantasia;
+        int num_funcionarios;
+        ArrayList<Aluno> alunos = new ArrayList<>();
 
-        //Caso o cliente nao tenha cadastrado endereco ou queira criar uma agregacao forte
-        String rua;
-        String bairro;
-        int numero_casa;
-        String complemento;
+        endereco = criaEndereco();
+        System.out.println("Insira o nome da escola: ");
+        nome = sc.nextLine();
+        System.out.println("Insira o numero de telefone da escola. Padrão (XX) XXXXX-XXXX");
+        telefone = sc.nextLine();
+        System.out.println("Digite o cnpj da escola:");
+        cnpj = sc.nextLine();
+        System.out.println("Digite o nome fictício da escola: ");
+        nome_fantasia = sc.nextLine();
+        System.out.println("Digite o numero de funcionarios: ");
+        num_funcionarios = sc.nextInt();
+        System.out.println("Adicione ao menos um aluno à escola:");
+        alunos.add(criaAluno());
 
-        if(enderecoDoCliente == null){
-                System.out.println("Não há endereco cadastrado.\n Não é possível cadastrar um motorista sem endereco. ");
-                System.out.println("Digite 1 para cadastrar uma escola com endereco, ou 2 para não cadastrar.");
-                int resposta = sc.nextInt();
-                sc.nextLine();
-                if(resposta == 1){
-                    endereco = criaEndereco();
-                    System.out.println("Insira o nome da escola: ");
-                    nome = sc.nextLine();
-                    System.out.println("Insira o numero de telefone da escola. Padrão (XX) XXXXX-XXXX");
-                    telefone = sc.nextLine();
-                    System.out.println("Digite o cnpj da escola:");
-                    cnpj = sc.nextLine();
-                    return new Escola(nome,endereco, telefone, cnpj);
-                }else{
-                    return null;
-                }
-        }else{
-            System.out.println("Insira o nome da escola: ");
-            nome = sc.nextLine();
-            System.out.println("Insira o numero de telefone da escola. Padrão (XX) XXXXX-XXXX");
-            telefone = sc.nextLine();
-            System.out.println("Digite o cnpj da escola:");
-            cnpj = sc.nextLine();
-            return new Escola(nome, enderecoDoCliente,telefone,cnpj);
-        }
+        return new Escola(nome,cnpj,endereco,telefone,nome_fantasia,num_funcionarios,alunos);
     }
     static Veiculo criaVeiculo(){
         String placa;
