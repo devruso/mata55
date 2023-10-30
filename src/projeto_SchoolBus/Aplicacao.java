@@ -1,6 +1,5 @@
 package projeto_SchoolBus;
 
-import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,10 +12,11 @@ public class Aplicacao {
     static int opcao;
 
     // Instancias que podem ser utilizadas durante a aplicacao
-    static Endereco enderecoDoCliente;
+    static Endereco endereco;
     static Aluno aluno;
     static Motorista motorista;
     static Contrato contrato;
+    static Fornecedor fornecedor;
     static Escola escola;
     static Veiculo veiculo;
     static PontoDeParada pontoDeParada;
@@ -28,14 +28,16 @@ public class Aplicacao {
         System.out.println("2. Criar Aluno");
         System.out.println("3. Criar Motorista");
         System.out.println("4. Criar Contrato");
-        System.out.println("5. Criar Escola");
-        System.out.println("6. Criar Veículo");
-        System.out.println("7. Criar Ponto de Parada");
-        System.out.println("8. Criar Nova Rota");
-        System.out.println("9. Calcular Demanda de Rota");
-        System.out.println("10. Exibir Total de Rotas Criadas");
-        System.out.println("11. Exibir Total de Pontos de Parada Criados");
-        System.out.println("12. Sair da aplicacao\n");
+        System.out.println("5. Criar Fornecedor");
+        System.out.println("6. Criar Escola");
+        System.out.println("7. Criar Veículo");
+        System.out.println("8. Criar Ponto de Parada");
+        System.out.println("9. Criar Nova Rota");
+        System.out.println("10. Calcular Demanda de Rota");
+        System.out.println("11. Exibir Total de Rotas Criadas");
+        System.out.println("12. Exibir Total de Pontos de Parada Criados");
+        System.out.println("13. Exibir Tipo de alguma Pessoa.");
+        System.out.println("16. Sair da aplicacao\n");
     }
     static Endereco criaEndereco(){
         String rua;
@@ -52,7 +54,7 @@ public class Aplicacao {
         complemento = sc.nextLine();
         System.out.println("Insira o bairro:");
         bairro = sc.nextLine();
-        return enderecoDoCliente = new Endereco(rua,numero,complemento,bairro);
+        return endereco = new Endereco(rua,numero,complemento,bairro);
     }
     static Aluno criaAluno(){
         String nome;
@@ -63,8 +65,6 @@ public class Aplicacao {
         String nome_mae;
         String naturalidade;
         String telefone;
-        Escola escola;
-        Endereco endereco;
         int matricula;
         int serie;
         String turno;
@@ -99,11 +99,19 @@ public class Aplicacao {
         sc.nextLine();
         System.out.println("Insira do turno do aluno. Matutino ou Vespertino.");
         turno = sc.nextLine();
-        endereco = criaEndereco();
-        escola = criaEscola();
-        pontoDeParada = criaPontoDeParada();
-
-        return new Aluno(nome_civil, cpf, endereco,telefone,nome,nome_mae,nome_pai, naturalidade, data_nascimento,escola, matricula, serie, turno, pontoDeParada);
+        if(endereco == null){
+            endereco = criaEndereco();
+        }
+        if (escola == null){
+            escola = criaEscola();
+        }
+        if(pontoDeParada == null){
+            pontoDeParada = criaPontoDeParada();
+        }
+        aluno =  new Aluno(nome_civil, cpf, endereco,telefone,nome,nome_mae,nome_pai, naturalidade, data_nascimento,escola, matricula, serie, turno, pontoDeParada);
+        escola.matricularAluno(aluno);
+        pontoDeParada.adicionarAluno(aluno);
+        return aluno;
     }
     static Motorista criaMotorista(){
         String nome;
@@ -117,12 +125,10 @@ public class Aplicacao {
         char[] habilitacao;
         Date data_nascimento;
         String num_habilitacao;
-        Boolean terceirizado;
-        ArrayList<Contrato> numero_contrato = new ArrayList<Contrato>();
+        boolean terceirizado;
+        ArrayList<Contrato> numero_contrato = new ArrayList<>();
 
         endereco = criaEndereco();
-        int resposta = sc.nextInt();
-        sc.nextLine();
         System.out.println("Insira o nome social do motorista:");
         nome = sc.nextLine();
         System.out.println("Insira o nome social do motorista:");
@@ -151,9 +157,8 @@ public class Aplicacao {
         } catch (ParseException e) {
             throw new RuntimeException("Formato de data errado.");
         }
-        // Implm a opção de usar um contrato pré-criado
-        numero_contrato.add(criaContrato());
-        return new Motorista(nome_civil,cpf_cnpj,endereco,numero_contato,nome,nome_mae,nome_pai,naturalidade,data_nascimento,habilitacao,num_habilitacao, terceirizado,numero_contrato);
+        if(contrato == null){numero_contrato.add(criaContrato());}else{numero_contrato.add(contrato);}
+        return motorista = new Motorista(nome_civil,cpf_cnpj,endereco,numero_contato,nome,nome_mae,nome_pai,naturalidade,data_nascimento,habilitacao,num_habilitacao, terceirizado,numero_contrato);
     }
     static Contrato criaContrato(){
         int num_contrato;
@@ -161,28 +166,85 @@ public class Aplicacao {
         Date data_fim;
         double valor;
 
-        System.out.println("Digite o numero do contrato:");
-        num_contrato = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Data de inicio do contrato. Use o formato dd/MM/aaaa");
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String dataInicioString = sc.nextLine();
-        try {
-            data_inicio = sdf.parse(dataInicioString);
-        } catch (ParseException e) {
-            throw new RuntimeException("Formato de data inválido.");
-        }
-        System.out.println("Data de finalização do contrato. Use o formato dd/MM/aaaa");
+        if(fornecedor == null){
+            System.out.println("Não é possível cadastrar um contrato sem fornecedor.");
+            System.out.println("Digite 1 para cadastrar um novo fornecedor");
+            int resposta = sc.nextInt();
+            if(resposta == 1){
+                fornecedor = criarFornecedor();
+                System.out.println("Digite o numero do contrato:");
+                num_contrato = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Data de inicio do contrato. Use o formato dd/MM/aaaa");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String dataInicioString = sc.nextLine();
+                try {
+                    data_inicio = sdf.parse(dataInicioString);
+                } catch (ParseException e) {
+                    throw new RuntimeException("Formato de data inválido.");
+                }
+                System.out.println("Data de finalização do contrato. Use o formato dd/MM/aaaa");
 
-        String dataFimString = sc.nextLine();
-        try{
-            data_fim = sdf.parse(dataFimString);
-        }catch (ParseException e){
-            throw new RuntimeException("Formato de data inválido");
+                String dataFimString = sc.nextLine();
+                try{
+                    data_fim = sdf.parse(dataFimString);
+                }catch (ParseException e){
+                    throw new RuntimeException("Formato de data inválido");
+                }
+                System.out.println("Digite o valor do contrato:");
+                valor = sc.nextDouble();
+                return new Contrato(num_contrato,data_inicio,data_fim,valor, fornecedor);
+            }else{
+                return null;
+            }
+        }else{
+            System.out.println("Digite o numero do contrato:");
+            num_contrato = sc.nextInt();
+            sc.nextLine();
+            System.out.println("Data de inicio do contrato. Use o formato dd/MM/aaaa");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            String dataInicioString = sc.nextLine();
+            try {
+                data_inicio = sdf.parse(dataInicioString);
+            } catch (ParseException e) {
+                throw new RuntimeException("Formato de data inválido.");
+            }
+            System.out.println("Data de finalização do contrato. Use o formato dd/MM/aaaa");
+
+            String dataFimString = sc.nextLine();
+            try{
+                data_fim = sdf.parse(dataFimString);
+            }catch (ParseException e){
+                throw new RuntimeException("Formato de data inválido");
+            }
+            System.out.println("Digite o valor do contrato:");
+            valor = sc.nextDouble();
+            contrato =  new Contrato(num_contrato,data_inicio,data_fim,valor, fornecedor);
+            fornecedor.adicionaContrato(contrato);
+            return contrato;
         }
-        System.out.println("Digite o valor do contrato:");
-        valor = sc.nextDouble();
-        return new Contrato(num_contrato,data_inicio,data_fim,valor);
+    }
+    static Fornecedor criarFornecedor(){
+        String nome_oficial;
+        String cpf_cnpj;
+        Endereco endereco;
+        String telefone;
+        String nome_fantasia;
+        int num_funcionario;
+        ArrayList<Contrato> contratos = new ArrayList<>();
+
+        System.out.println("Insira o nome cívil do fornecedor: ");
+        nome_oficial = sc.nextLine();
+        System.out.println("Insira o CNPJ do fornecedor: ");
+        cpf_cnpj = sc.nextLine();
+        endereco = criaEndereco();
+        System.out.println("Insira o telefone do fornecedor (XX) XXXXX-XXXX");
+        telefone = sc.nextLine();
+        System.out.println("Insira o nome da empresa do fornecedor: ");
+        nome_fantasia = sc.nextLine();
+        System.out.println("Insira o número de funcionários da empresa:");
+        num_funcionario = sc.nextInt();
+        return fornecedor = new Fornecedor(nome_oficial,cpf_cnpj,endereco,telefone,nome_fantasia,num_funcionario,contratos);
     }
     static Escola criaEscola(){
         String nome;
@@ -192,7 +254,6 @@ public class Aplicacao {
         String nome_fantasia;
         int num_funcionarios;
         ArrayList<Aluno> alunos = new ArrayList<>();
-
         endereco = criaEndereco();
         System.out.println("Insira o nome da escola: ");
         nome = sc.nextLine();
@@ -204,9 +265,7 @@ public class Aplicacao {
         nome_fantasia = sc.nextLine();
         System.out.println("Digite o numero de funcionarios: ");
         num_funcionarios = sc.nextInt();
-        System.out.println("Adicione ao menos um aluno à escola:");
-        alunos.add(criaAluno());
-
+        System.out.println("Adicione um aluno à escola:");
         return new Escola(nome,cnpj,endereco,telefone,nome_fantasia,num_funcionarios,alunos);
     }
     static Veiculo criaVeiculo(){
@@ -231,7 +290,7 @@ public class Aplicacao {
                 capacidade = sc.nextInt();
                 System.out.println("Digite se o veículo é alugado, com true ou false.");
                 isAlugado = sc.nextBoolean();
-                return new Veiculo(placa, ano, modelo, capacidade, isAlugado, contrato);
+                return veiculo = new Veiculo(placa, ano, modelo, capacidade, isAlugado, contrato);
             }else{
                 return null;
             }
@@ -246,7 +305,7 @@ public class Aplicacao {
         capacidade = sc.nextInt();
         System.out.println("Digite se o veículo é alugado, com true ou false.");
         isAlugado = sc.nextBoolean();
-        return new Veiculo(placa, ano, modelo, capacidade, isAlugado, contrato);
+        return veiculo =  new Veiculo(placa, ano, modelo, capacidade, isAlugado, contrato);
     }
     }
     static PontoDeParada criaPontoDeParada(){
@@ -256,41 +315,15 @@ public class Aplicacao {
         double longitude;
         ArrayList<Aluno> alunos = new ArrayList<>();
 
-        if(aluno == null){
-            System.out.println("Não há alunos para serem adicionados ao ponto de parada.");
-            System.out.println("Não é possível criar um ponto de parada sem pelo menos um aluno");
-            System.out.println("Digite 1 para criar um novo aluno. \n Digite 2 para cancelar.");
-            int opcao = sc.nextInt();
-            if(opcao == 1){
-                Aluno novoAluno = criaAluno();
-                System.out.println("Digite o id");
-                id = sc.nextInt();
-                System.out.println("Digite o nome do ponto");
-                nome = sc.nextLine();
-                nome = sc.nextLine();
-                System.out.println("Digite a latitude");
-                latitude = sc.nextDouble();
-                System.out.println("Digite a longitude");
-                longitude = sc.nextDouble();
-                alunos.add(novoAluno);
-                return new PontoDeParada(id, nome, latitude, longitude, alunos);
-            }else{
-                return null;
-            }
-        }else{
-            System.out.println("Digite o id");
-            id = sc.nextInt();
-            System.out.println("Digite o nome do ponto");
-            nome = sc.nextLine();
-            sc.nextLine();
-            System.out.println("Digite a latitude");
-            latitude = sc.nextDouble();
-            System.out.println("Digite a longitude");
-            longitude = sc.nextDouble();
-            alunos.add(aluno);
-            return new PontoDeParada(id, nome, latitude, longitude, alunos);
-        }
-
+        System.out.println("Digite o id");
+        id = sc.nextInt();
+        System.out.println("Digite o nome do ponto");
+        nome = sc.nextLine();
+        System.out.println("Digite a latitude");
+        latitude = sc.nextDouble();
+        System.out.println("Digite a longitude");
+        longitude = sc.nextDouble();
+        return pontoDeParada =  new PontoDeParada(id, nome, latitude, longitude, alunos);
     }
     static Rota criaRota(){
       PontoDeParada pontoAtual;
@@ -336,6 +369,67 @@ public class Aplicacao {
     static void exibeTotalDePontosDeParada(){
         System.out.println("O total de pontos de parada é: "+PontoDeParada.getTotalDeParadas());
     }
+    static void exibeTipoDaPessoa(){
+        int opcao;
+        do{
+            System.out.println("Exibe o tipo de:  Aluno, Motorista, Escola ou Fornecedor");
+            System.out.println("""
+                    Para aluno, digite 1.\s
+                    Para motorista, digite 2
+                    Para escola, digite 3.\s
+                    Para fornecedor, digite 4.\s
+                     Para sair, digite 8.""");
+            opcao = sc.nextInt();
+            if(opcao == 1){
+                if(aluno == null) criaAluno();
+                aluno.verificarTipo();
+                return;
+            } else if (opcao == 2) {
+                if(motorista == null) criaMotorista();
+                motorista.verificarTipo();
+                return;
+            } else if (opcao == 3) {
+                if(escola == null) criaEscola();
+                escola.verificarTipo();
+                return;
+            } else if (opcao == 4) {
+                if(fornecedor == null) criarFornecedor();
+                fornecedor.verificarTipo();
+                return;
+            }
+        }while(opcao != 8);
+    }
+    static void exibeInformacoesDetalhadas(){
+        int opcao;
+        do{
+            System.out.println("Exibe informações detalhadas de:  Aluno, Motorista, Escola ou Fornecedor");
+            System.out.println("""
+                    Para aluno, digite 1.\s
+                    Para motorista, digite 2
+                    Para escola, digite 3.\s
+                    Para fornecedor, digite 4.\s
+                     Para sair, digite 8.""");
+            opcao = sc.nextInt();
+            if(opcao == 1){
+                if(aluno == null) criaAluno();
+                aluno.apresentarDados();
+                return;
+            } else if (opcao == 2) {
+                if(motorista == null) criaMotorista();
+                motorista.apresentarDados();
+                return;
+            } else if (opcao == 3) {
+                if(escola == null) criaEscola();
+                escola.apresentarDados();
+                return;
+            }else if(opcao == 4){
+                if(fornecedor == null) criarFornecedor();
+                fornecedor.apresentarDados();
+                return;
+            }
+        }while(opcao != 8);
+    }
+
     public static void main(String[] args) {
 
         do{
@@ -347,16 +441,17 @@ public class Aplicacao {
                 case 2 -> criaAluno();
                 case 3 -> criaMotorista();
                 case 4 -> criaContrato();
-                case 5 -> criaEscola();
-                case 6 -> criaVeiculo();
-                case 7 -> criaPontoDeParada();
-                case 8 -> criaRota();
-                case 9 -> calculaDemandaDeUmaRota();
-                case 10 -> exibeTotalDeRotas();
-                case 11 -> exibeTotalDePontosDeParada();
-
+                case 5 -> criarFornecedor();
+                case 6 -> criaEscola();
+                case 7 -> criaVeiculo();
+                case 8 -> criaPontoDeParada();
+                case 9 -> criaRota();
+                case 10 -> calculaDemandaDeUmaRota();
+                case 11 -> exibeTotalDeRotas();
+                case 12 -> exibeTotalDePontosDeParada();
+                case 13 -> exibeTipoDaPessoa();
             }
-        }while(opcao != 12);
+        }while(opcao != 16);
 
 
 
