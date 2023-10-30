@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class PontoDeParada
 {
-    private int id;
+    static int id;
     private String nome;
     private double latitude;
     private double longitude;
     private ArrayList<Aluno> alunos;
     private static int totalDeParadas = 0;
 
-    public PontoDeParada(int id, String nome, double latitude, double longitude, ArrayList<Aluno> alunos) {
-        this.id = id;
+    public PontoDeParada(String nome, double latitude, double longitude, ArrayList<Aluno> alunos) {
+        PontoDeParada.id++;
         this.nome = nome;
         this.latitude = latitude;
         this.longitude = longitude;
