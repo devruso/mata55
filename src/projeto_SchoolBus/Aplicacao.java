@@ -132,7 +132,7 @@ public class Aplicacao {
         endereco = criaEndereco();
         System.out.println("Insira o nome social do motorista:");
         nome = sc.nextLine();
-        System.out.println("Insira o nome social do motorista:");
+        System.out.println("Insira o nome civil do motorista:");
         nome_civil = sc.nextLine();
         System.out.println("Insira o cpf ou cnpj do motorista:");
         cpf_cnpj = sc.nextLine();
@@ -146,6 +146,7 @@ public class Aplicacao {
         terceirizado = sc.nextBoolean();
         System.out.println("Digite o telefone o motorista");
         numero_contato = sc.nextLine();
+        sc.nextLine();
         System.out.println("Carteira de habilitacao do motorista. Adicione o caractere.");
         habilitacao = sc.nextLine().toCharArray();
         System.out.println("Digite o número de habilitação do motorista");
@@ -187,6 +188,7 @@ public class Aplicacao {
             }
             System.out.println("Digite o valor do contrato:");
             valor = sc.nextDouble();
+            sc.nextLine();
             if(fornecedor == null) criarFornecedor();
             contrato =  new Contrato(num_contrato,data_inicio,data_fim,valor, fornecedor);
             fornecedor.adicionaContrato(contrato);
@@ -195,17 +197,16 @@ public class Aplicacao {
     static Fornecedor criarFornecedor(){
         String nome_oficial;
         String cpf_cnpj;
-        Endereco endereco;
         String telefone;
         String nome_fantasia;
         int num_funcionario;
         ArrayList<Contrato> contratos = new ArrayList<>();
-
+        System.out.println("\nCriação de fornecedor.");
         System.out.println("Insira o nome cívil do fornecedor: ");
         nome_oficial = sc.nextLine();
         System.out.println("Insira o CNPJ do fornecedor: ");
         cpf_cnpj = sc.nextLine();
-        endereco = criaEndereco();
+        if (endereco == null) criaEndereco();
         System.out.println("Insira o telefone do fornecedor (XX) XXXXX-XXXX");
         telefone = sc.nextLine();
         System.out.println("Insira o nome da empresa do fornecedor: ");
@@ -222,7 +223,7 @@ public class Aplicacao {
         int num_funcionarios;
         ArrayList<Aluno> alunos = new ArrayList<>();
         System.out.println("\nCriação de  uma escola. \n");
-        System.out.println("Insira o nome da escola: ");
+        System.out.println("Insira o nome jurídico da escola: ");
         nome = sc.nextLine();
         System.out.println("Insira o numero de telefone da escola. Padrão (XX) XXXXX-XXXX");
         telefone = sc.nextLine();
@@ -242,16 +243,18 @@ public class Aplicacao {
         int capacidade;
         boolean isAlugado;
         System.out.println("Criação de veículo.\n");
-            System.out.println("Não há contrato para vincular. É necessário um contrato para criar um veículo.");
             if(contrato == null) criaContrato();
+            sc.nextLine();
             System.out.println("Digite a placa do veiculo: ");
             placa = sc.nextLine();
             System.out.println("Digite o ano do veiculo");
             ano = sc.nextInt();
+            sc.nextLine();
             System.out.println("digite o modelo do veiculo:");
             modelo= sc.nextLine();
             System.out.println("Digite a capacidade do veiculo");
             capacidade = sc.nextInt();
+            sc.nextLine();
             System.out.println("Digite se o veículo é alugado, com true ou false.");
             isAlugado = sc.nextBoolean();
             return veiculo = new Veiculo(placa, ano, modelo, capacidade, isAlugado, contrato);
@@ -278,11 +281,13 @@ public class Aplicacao {
       int totalPontos = 0;
           System.out.println("Para criar uma rota é necessário adicionar ao menos 1 ponto de parada.");
       do{
-          System.out.println("Para adicionar um ponto de parada digite 1. \n Para cancelar digite 0.");
+          System.out.println("Para adicionar um ponto de parada digite 1.Para cancelar digite 0.");
           opcao = sc.nextInt();
+          sc.nextLine();
           if(opcao == 1){
               pontoAtual = criaPontoDeParada();
               pontosCriados.add(pontoAtual);
+              System.out.println("\nPonto de parada cadastrado.");
           }else{
               if(totalPontos < 1) {
                   System.out.println("Necessario ao menos 1 ponto na rota");
@@ -328,19 +333,19 @@ public class Aplicacao {
             opcao = sc.nextInt();
             if(opcao == 1){
                 if(aluno == null) criaAluno();
-                aluno.verificarTipo();
+                System.out.println(aluno.verificarTipo());
                 return;
             } else if (opcao == 2) {
                 if(motorista == null) criaMotorista();
-                motorista.verificarTipo();
+                System.out.println(motorista.verificarTipo());
                 return;
             } else if (opcao == 3) {
                 if(escola == null) criaEscola();
-                escola.verificarTipo();
+                System.out.println(escola.verificarTipo());
                 return;
             } else if (opcao == 4) {
                 if(fornecedor == null) criarFornecedor();
-                fornecedor.verificarTipo();
+                System.out.println(fornecedor.verificarTipo());
                 return;
             }
         }while(opcao != 8);
@@ -379,15 +384,15 @@ public class Aplicacao {
     public static void main(String[] args) {
 
         do{
-            System.out.println("É recomendado criar, endereço, escola, ponto de parada e aluno para poupar retrabalho.\n");
+            System.out.println("\nÉ recomendado criar na ordem, endereço, escola, ponto de parada e aluno para poupar retrabalho.");
             menu();
             opcao = sc.nextInt();
             sc.nextLine();
             switch (opcao) {
                 case 1 -> criaEndereco();
                 case 2 -> criaEscola();
-                case 3 -> criaAluno();
-                case 4 -> criaPontoDeParada();
+                case 3 -> criaPontoDeParada();
+                case 4 -> criaAluno();
                 case 5 -> criaMotorista();
                 case 6 -> criaContrato();
                 case 7 -> criarFornecedor();
