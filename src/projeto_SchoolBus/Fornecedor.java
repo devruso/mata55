@@ -16,6 +16,18 @@ public class Fornecedor extends PessoaJuridica {
     public String apresentarDados(){
         return "\nContratos: " + this.contratos;
     }
+    @Override
+    public String verificarTipo(){
+        return "Fornecedor";
+    }
+
+    public ArrayList<Contrato> getContratos() {
+        return contratos;
+    }
+
+    public void adicionaContrato(Contrato contrato){
+        contratos.add(contrato);
+    }
 
 
 }

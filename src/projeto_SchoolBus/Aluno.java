@@ -25,6 +25,10 @@ public class Aluno extends PessoaFisica
         return super.apresentarDados() + "\nEscola: " + this.escola + "\nMatricula : " + this.matricula + "\nSerie: " + this.serie
                 + "\nTurno: " + this.turno + "\nPonto de parada: "  + this.pontoDeParada;
     }
+    @Override
+    public String verificarTipo(){
+        return "Aluno";
+    }
 
     public Escola getEscola() {
         return this.escola;
