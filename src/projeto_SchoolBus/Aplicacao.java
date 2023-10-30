@@ -69,7 +69,7 @@ public class Aplicacao {
         int matricula;
         int serie;
         String turno;
-
+        System.out.println("\nCadastro de um aluno");
         System.out.println("Insira o nome do aluno:");
         nome = sc.nextLine();
         System.out.println("Insira o nome civil/social do aluno:");
@@ -255,7 +255,7 @@ public class Aplicacao {
         String nome_fantasia;
         int num_funcionarios;
         ArrayList<Aluno> alunos = new ArrayList<>();
-        endereco = criaEndereco();
+        System.out.println("\nCriação de  uma escola. ");
         System.out.println("Insira o nome da escola: ");
         nome = sc.nextLine();
         System.out.println("Insira o numero de telefone da escola. Padrão (XX) XXXXX-XXXX");
@@ -267,6 +267,7 @@ public class Aplicacao {
         System.out.println("Digite o numero de funcionarios: ");
         num_funcionarios = sc.nextInt();
         System.out.println("Adicione um aluno à escola:");
+        endereco = criaEndereco();
         return new Escola(nome,cnpj,endereco,telefone,nome_fantasia,num_funcionarios,alunos);
     }
     static Veiculo criaVeiculo(){
@@ -315,11 +316,11 @@ public class Aplicacao {
         double latitude;
         double longitude;
         ArrayList<Aluno> alunos = new ArrayList<>();
-
-        System.out.println("Digite o id");
+        System.out.println("\nCadastro de ponto de parada! ");
         id = sc.nextInt();
         System.out.println("Digite o nome do ponto");
         nome = sc.nextLine();
+        sc.nextLine();
         System.out.println("Digite a latitude");
         latitude = sc.nextDouble();
         System.out.println("Digite a longitude");
