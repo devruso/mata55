@@ -26,5 +26,9 @@ public class PontoDeParada
         return totalDeParadas;
     }
 
+    public String apresentarDados(){
+        return "\nNome: " + this.nome + "\nLatitude: " + this.latitude + "\nLongitude: "+this.longitude+"\nAlunos: " + this.alunos;
+}
+
 
 }

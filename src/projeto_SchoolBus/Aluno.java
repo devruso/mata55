@@ -22,8 +22,8 @@ public class Aluno extends PessoaFisica
 
     @Override
     public String apresentarDados(){
-        return super.apresentarDados() + "\nEscola: " + this.escola + "\nMatricula : " + this.matricula + "\nSerie: " + this.serie
-                + "\nTurno: " + this.turno + "\nPonto de parada: "  + this.pontoDeParada;
+        return super.apresentarDados() + "\nEscola: " + this.escola.apresentarDados() + "\nMatricula : " + this.matricula + "\nSerie: " + this.serie
+                + "\nTurno: " + this.turno + "\nPonto de parada: "  + this.pontoDeParada.apresentarDados();
     }
     @Override
     public String verificarTipo(){

@@ -13,4 +13,7 @@ public class Endereco {
         this.complemento = complemento;
         this.bairro = bairro;
     }
+    public String apresentarDados(){
+        return "\nRua: " + this.rua + "\nNúmero: "+this.numero + "\nComplemento: " + this.complemento + "\nBairro: " + this.bairro;
+    }
 }
