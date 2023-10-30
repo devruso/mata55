@@ -14,7 +14,7 @@ public class Fornecedor extends PessoaJuridica {
 
     @Override
     public String apresentarDados(){
-        return "\nContratos: " + this.contratos;
+        return super.apresentarDados() + "\nContratos: " + this.contratos;
     }
     @Override
     public String verificarTipo(){
