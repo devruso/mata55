@@ -19,7 +19,9 @@ public class PontoDeParada
         this.alunos = alunos;
         totalDeParadas++;
     }
-
+    public void adicionarAluno(Aluno aluno){
+        this.alunos.add(aluno);
+    }
     public static int getTotalDeParadas(){
         return totalDeParadas;
     }
