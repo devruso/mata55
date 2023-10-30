@@ -11,6 +11,7 @@ public class Contrato {
     private double valor;
     private ArrayList<Motorista> motoristas;
     private ArrayList<Veiculo> veiculos;
+    private Fornecedor fornecedor;
 
 
 
@@ -19,6 +20,13 @@ public class Contrato {
         this.data_inicio = data_inicio;
         this.data_fim = data_fim;
         this.valor = valor;
+    }
+    public void adicionaFornecedor(PessoaJuridica pessoa){
+        if(pessoa instanceof Fornecedor){
+            this.fornecedor = (Fornecedor) pessoa;
+        }else{
+            throw new Error("Só é possível criar contratos com fornecedor.");
+        }
     }
 
     public void adicionaVeiculo(Veiculo veiculo){
@@ -33,6 +41,7 @@ public class Contrato {
             System.out.println("Veiculo não está alugado");
         }
     }
+
 
     public void removeVeiculo(Veiculo veiculo){
         if (this.veiculos.contains(veiculo)){

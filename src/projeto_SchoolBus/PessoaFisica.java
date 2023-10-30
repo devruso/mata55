@@ -25,6 +25,12 @@ public class PessoaFisica extends Pessoa {
     public String getNome() {
         return nome;
     }
+    public String getNomeCivil(){
+        return super.getNome_oficial();
+    }
+    public String getCpf(){
+        return super.getCpf_cnpj();
+    }
 
     public String getMae() {
         return mae;

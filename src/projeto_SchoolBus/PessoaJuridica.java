@@ -14,4 +14,13 @@ public class PessoaJuridica extends Pessoa {
         this.nome_fantasia = nome_fantasia;
         this.num_funcionario = num_funcionario;
     }
+
+    public String getNome_fantasia(){
+        return this.nome_fantasia;
+    }
+
+    public String getCNPJ(){
+        return super.getCpf_cnpj();
+    }
+
 }
