@@ -37,6 +37,7 @@ public class Aplicacao {
         System.out.println("11. Exibir Total de Rotas Criadas");
         System.out.println("12. Exibir Total de Pontos de Parada Criados");
         System.out.println("13. Exibir Tipo de alguma Pessoa.");
+        System.out.println("14. Exibir informações detalhas de alguma Pessoa");
         System.out.println("16. Sair da aplicacao\n");
     }
     static Endereco criaEndereco(){
@@ -450,6 +451,7 @@ public class Aplicacao {
                 case 11 -> exibeTotalDeRotas();
                 case 12 -> exibeTotalDePontosDeParada();
                 case 13 -> exibeTipoDaPessoa();
+                case 14 -> exibeInformacoesDetalhadas();
             }
         }while(opcao != 16);
 
