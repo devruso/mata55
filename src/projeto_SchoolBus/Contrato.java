@@ -15,11 +15,12 @@ public class Contrato {
 
 
 
-    public Contrato(int num_contrato, Date data_inicio, Date data_fim, double valor) {
+    public Contrato(int num_contrato, Date data_inicio, Date data_fim, double valor, Fornecedor fornecedor) {
         this.num_contrato = num_contrato;
         this.data_inicio = data_inicio;
         this.data_fim = data_fim;
         this.valor = valor;
+        this.fornecedor = fornecedor;
     }
     public void adicionaFornecedor(PessoaJuridica pessoa){
         if(pessoa instanceof Fornecedor){
