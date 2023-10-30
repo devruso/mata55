@@ -24,6 +24,10 @@ public class Pessoa {
 
     protected String apresentarDados(){
         return "Nome oficial: " + this.nome_oficial + "\nCPF: " + this.cpf_cnpj + "\nEndereco: " + this.endereco + "\nTelefone: " + this.telefone;
-    };
+    }
+    protected String verificarTipo(){
+        return "Pessoa";
+    }
+
 
 }
