@@ -189,12 +189,12 @@ public class Aplicacao {
             System.out.println("Digite o valor do contrato:");
             valor = sc.nextDouble();
             sc.nextLine();
-            if(fornecedor == null) criarFornecedor();
+            if(fornecedor == null) criaFornecedor();
             contrato =  new Contrato(num_contrato,data_inicio,data_fim,valor, fornecedor);
             fornecedor.adicionaContrato(contrato);
             return contrato;
     }
-    static Fornecedor criarFornecedor(){
+    static Fornecedor criaFornecedor(){
         String nome_oficial;
         String cpf_cnpj;
         String telefone;
@@ -344,7 +344,7 @@ public class Aplicacao {
                 System.out.println(escola.verificarTipo());
                 return;
             } else if (opcao == 4) {
-                if(fornecedor == null) criarFornecedor();
+                if(fornecedor == null) criaFornecedor();
                 System.out.println(fornecedor.verificarTipo());
                 return;
             }
@@ -374,7 +374,7 @@ public class Aplicacao {
                 System.out.println(escola.apresentarDados());
                 return;
             }else if(opcao == 4){
-                if(fornecedor == null) criarFornecedor();
+                if(fornecedor == null) criaFornecedor();
                 System.out.println(fornecedor.apresentarDados());
                 return;
             }
@@ -395,7 +395,7 @@ public class Aplicacao {
                 case 4 -> criaAluno();
                 case 5 -> criaMotorista();
                 case 6 -> criaContrato();
-                case 7 -> criarFornecedor();
+                case 7 -> criaFornecedor();
                 case 8 -> criaVeiculo();
                 case 9 -> criaRota();
                 case 10 -> calculaDemandaDeUmaRota();
